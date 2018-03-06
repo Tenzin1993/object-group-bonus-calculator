@@ -8,4 +8,56 @@ const employees = [ atticus, jem, scout, robert, mayella ];
 
 // YOU SHOULD NOT NEED TO CHANGE ANYTHING ABOVE THIS POINT
 
-console.log(employees);
+//console.log(employees);
+
+class Employee {
+  constructor(emp){
+    this.name = emp.name;
+    this.employeeNumber = emp.employeeNumber;
+    this.annualSalary = emp.annualSalary;
+    this.reviewRating = emp.reviewRating;
+    this.bonusPercentage = bonus(emp);
+    this.totalCompensation = totalComp(emp);
+  }
+}
+
+function swag(person){
+  let supaSwag = new Employee(person);
+  return supaSwag;
+}
+
+function totalComp(employee){
+  let blue = parseInt(employee.annualSalary);
+  return blue + (blue * (bonus(employee)/100));
+}
+
+
+
+function bonus(employee){
+  let bonusPercentage = 0;
+  if(employee.employeeNumber.length == 4){
+    bonusPercentage += 5;
+  }
+  if(parseInt(employee.annualSalary) > 65000){
+    bonusPercentage -= 1;
+  }
+  if(employee.reviewRating <= 2 ) {
+    let bonusPercentage = 0;
+  } else if(employee.reviewRating == 3){
+  bonusPercentage += 4;
+  } else if(employee.reviewRating == 4){
+  bonusPercentage += 6;
+  } else if (employee.reviewRating == 5){
+  bonusPercentage += 10;
+  }
+  if (bonusPercentage > 13){
+    let bonusPercentage = 13;
+  }
+  if (bonusPercentage < 0){
+    let bonusPercentage = 0;
+  }
+  return bonusPercentage;
+
+
+
+}
