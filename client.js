@@ -10,6 +10,10 @@ const employees = [ atticus, jem, scout, robert, mayella ];
 
 //console.log(employees);
 
+$( document ).ready(function(){
+
+});
+
 class Employee {
   constructor(emp){
     this.name = emp.name;
@@ -18,6 +22,7 @@ class Employee {
     this.reviewRating = emp.reviewRating;
     this.bonusPercentage = bonus(emp);
     this.totalCompensation = totalComp(emp);
+    this.totalBonus = totalBonus(emp);
   }
 }
 
@@ -26,12 +31,15 @@ function swag(person){
   return supaSwag;
 }
 
+function totalBonus(employee){
+  let blue = parseInt(employee.annualSalary);
+  return blue * (bonus(employee)/100);
+}
+
 function totalComp(employee){
   let blue = parseInt(employee.annualSalary);
   return blue + (blue * (bonus(employee)/100));
 }
-
-
 
 function bonus(employee){
   let bonusPercentage = 0;
@@ -57,7 +65,9 @@ function bonus(employee){
     let bonusPercentage = 0;
   }
   return bonusPercentage;
+}
 
-
+for(let i=0; i<employees.length; i++){
+  $('#onDaDom').append(console.log(swag(employees[i])));
 
 }
